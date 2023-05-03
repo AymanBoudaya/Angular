@@ -1,0 +1,54 @@
+<div class="container mt-5" >
+    <ng-template #errors>
+        <div class="text-danger">
+            {{errMessage}}
+        </div>
+    </ng-template>
+    <div class="card" *ngIf="products; else errors">
+        <div class="card-header">Liste des produits</div>
+        <div class="card-body">
+            <form action="" [formGroup]="searchFormGroup" (ngSubmit)="handleSearchProducts()">
+                <div class="input-group">
+                    <label for="" class="input-group-text">Keyword:</label>
+                    <input type="text" name="" id="" class="form-control" formControlName="keyword">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let p of products">
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td><i class="bi bi-heart-fill text-success" *ngIf="p.promotion"></i></td>
+                        <td>
+                            <button (click)="handleSetPromotion(p)" class="btn" [ngClass]="(p.promotion)?'btn-danger':'btn-success'">
+                                <span *ngIf="p.promotion">Promo off</span>
+                                <span *ngIf="!p.promotion">Promo on</span>
+                            </button>
+                        </td>
+                        <td *ngIf="authService.hasRole('ADMIN')">
+                            <button class="btn btn-danger" (click)="handleDeleteProduct(p)"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+                   <a (click)="gotoPage(i)" [ngClass]="i==currentPage?'btn-info':'btn-outline-info'" class="btn ms-1 mt-1">{{i}}</a> 
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
