@@ -4,26 +4,26 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/products">products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/customers">customers</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li>
-          <a class="nav-link">{{authService.authenticatedUser!.username}}</a>
-        </li>
-        <li>
-          <a class="nav-link" (click)="handleLogout()"><i class="bi bi-box-arrow-right"></i></a>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/products">products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/customers">customers</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li>
+            <a class="nav-link">{{authService.authenticatedUser!.username}}</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="handleLogout()"><i class="bi bi-box-arrow-right"></i></a>
+          </li>
+        </ul>
     </div>
   </nav>
   <router-outlet>

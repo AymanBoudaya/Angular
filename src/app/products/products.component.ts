@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -21,7 +22,8 @@ export class ProductsComponent {
   currentAction : string ="all";
 
   constructor(private productService: ProductService, private fb : FormBuilder,
-    public authService : AuthenticationService){}
+    public authService : AuthenticationService,
+    private router : Router){}
 
   ngOnInit():void{
     this.searchFormGroup = this.fb.group({
@@ -30,6 +32,9 @@ export class ProductsComponent {
     this.handleGetPageProducts()
     }
 
+    handleNewProduct(){
+      this.router.navigateByUrl('/admin/newProduct')
+    }
     handleGetPageProducts(){
       this.productService.getPageProducts(this.currentPage,this.pageSize).subscribe({
         next : data=> {this.products = data.products;

@@ -1,4 +1,9 @@
 <div class="container mt-5" >
+    <nav *ngIf="authService.hasRole('ADMIN')" class="p-2 m-2 border border-info">
+        <button class="btn btn-outline-info" (click)="handleNewProduct()">
+            New Product
+        </button>
+    </nav>
     <ng-template #errors>
         <div class="text-danger">
             {{errMessage}}
@@ -40,6 +45,9 @@
                         </td>
                         <td *ngIf="authService.hasRole('ADMIN')">
                             <button class="btn btn-danger" (click)="handleDeleteProduct(p)"><i class="bi bi-trash"></i></button>
+                        </td>
+                        <td *ngIf="authService.hasRole('ADMIN')">
+                            <button class="btn btn-info" ><i class="bi bi-pencil"></i></button>
                         </td>
                     </tr>
                 </tbody>
