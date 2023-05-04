@@ -12,7 +12,7 @@ export class NewProductComponent {
 
   productFormGroup! : FormGroup;
 
-  constructor(private router : Router ,private fb : FormBuilder, private productService : ProductService){}
+  constructor(private router : Router ,private fb : FormBuilder, public productService : ProductService){}
 
   ngOnInit():void {
     this.productFormGroup = this.fb.group({
@@ -20,19 +20,6 @@ export class NewProductComponent {
       price:this.fb.control(null,  [Validators.required , Validators.min(200)]),
       promotion:this.fb.control(false,  [Validators.required])
     })
-  }
-
-  getErrorMessage(fieldName:string, errors:ValidationErrors){
-    if (errors['required']) {
-      return fieldName + " is Required"
-    }    
-    else if (errors['minlength']) {
-      return fieldName + " should have at least " + errors['minlength']['requiredLength']+ " Characters"
-    }
-    else if (errors['min']) {
-      return fieldName + " should be at least " + errors['min']['min']
-    }
-    else return ""
   }
 
   handleAddProduct(){

@@ -47,7 +47,7 @@
                             <button class="btn btn-danger" (click)="handleDeleteProduct(p)"><i class="bi bi-trash"></i></button>
                         </td>
                         <td *ngIf="authService.hasRole('ADMIN')">
-                            <button class="btn btn-info" ><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-info" (click)="handleEditProduct(p)"><i class="bi bi-pencil"></i></button>
                         </td>
                     </tr>
                 </tbody>

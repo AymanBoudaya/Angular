@@ -35,6 +35,10 @@ export class ProductsComponent {
     handleNewProduct(){
       this.router.navigateByUrl('/admin/newProduct')
     }
+
+    handleEditProduct(p:Product){
+      this.router.navigateByUrl('/admin/editProduct/'+p.id)
+    }
     handleGetPageProducts(){
       this.productService.getPageProducts(this.currentPage,this.pageSize).subscribe({
         next : data=> {this.products = data.products;
